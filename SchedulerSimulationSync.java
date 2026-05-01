@@ -49,20 +49,37 @@ class SharedResources {
     // Method to increment context switch counter
     public static void incrementContextSwitch() {
         // TODO: Protect this critical section with a lock
+        lock.lock();
+        try {
+            contextSwitchCount++;
+        } finally {
+            lock.unlock();
+        }
         // RACE CONDITION: Multiple threads might read and write simultaneously!
-        contextSwitchCount++;
+
     }
 
     // Method to increment completed process counter
     public static void incrementCompletedProcess() {
         // TODO: Protect this critical section with a lock
-        completedProcessCount++;
+        lock.lock();
+        try {
+            completedProcessCount++;
+        } finally {
+            lock.unlock();
+        }
+
     }
 
     // Method to add waiting time
     public static void addWaitingTime(long time) {
         // TODO: Protect this critical section with a lock
-        totalWaitingTime += time;
+        lock.lock();
+        try {
+            totalWaitingTime += time;
+        } finally {
+            lock.unlock();
+        }
     }
 
     // Method to log execution
