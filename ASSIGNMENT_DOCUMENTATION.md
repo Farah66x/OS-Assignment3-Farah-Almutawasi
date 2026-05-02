@@ -145,52 +145,67 @@ Document your development process with **minimum 3 entries** showing progression
 
 ### Critical Section #1: Counter Variables
 
-**Which variables**: 
+**Which variables**:  contextSwitchCount, completedProcessCount, totalWaitingTime
 
-**Why they need protection**: 
+**Why they need protection**: They are shared among multiple threads and can be updated simultaneously, causing race conditions.
 
-**Synchronization mechanism used**: 
+**Synchronization mechanism used**: ReentrantLock
 
 **Code snippet**:
 ```java
-// Paste your implementation here
+lock.lock();
+try {
+    contextSwitchCount++;
+} finally {
+    lock.unlock();
+}
+
 ```
 
-**Justification**: 
+**Justification**: ReentrantLock ensures mutual exclusion and prevents inconsistent updates.
 
 ---
 
 ### Critical Section #2: Execution Log
 
-**What resource**: 
+**What resource**: executionLog (ArrayList)
 
-**Why it needs protection**: 
+**Why it needs protection**:ArrayList is not thread-safe and concurrent modifications may cause exceptions.
+ 
 
-**Synchronization mechanism used**: 
+**Synchronization mechanism used**: ReentrantLock
 
 **Code snippet**:
 ```java
 // Paste your implementation here
+lock.lock();
+try {
+    executionLog.add(message);
+} finally {
+    lock.unlock();
+}
 ```
 
-**Justification**: 
+**Justification**: Prevents concurrent modification and ensures data consistency.
 
 ---
 
 ### Critical Section #3: CPU Semaphore
 
-**Purpose of semaphore**: 
+**Purpose of semaphore**: To ensure only one process uses the CPU at a time.
 
-**Number of permits and why**: 
+**Number of permits and why**: 1 permit to simulate a single CPU.
 
 **Where implemented**: 
-
+Inside run() method.
 **Code snippet**:
 ```java
 // Paste your implementation here
-```
+```SharedResources.cpuSemaphore.acquire();
+// execution
+SharedResources.cpuSemaphore.release();
 
-**Effect on program behavior**: 
+**Effect on program behavior**:Prevents multiple processes from executing simultaneously. 
 
 ---
 
