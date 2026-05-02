@@ -1,7 +1,7 @@
 # Assignment 3 - Complete Documentation
 
-**Student Name**: [Your Full Name]  
-**Student ID**: [Your ID]  
+**Student Name**: [Farah Almutawasi]  
+**Student ID**: [444051798]  
 **Date Submitted**: [Submission Date]
 
 ---
@@ -31,55 +31,55 @@
 
 Document your development process with **minimum 3 entries** showing progression:
 
-### Entry 1 - [Date, Time]
-**What I implemented**: 
+### Entry 1 - [April 30, 2026 - 7:00 PM]
+**What I implemented**: I began by reading the provided code and comprehending the assignment criteria. I found common resources like executionLog, totalWaitingTime, contextSwitchCount, and completedProcessCount.
 
-**Challenges encountered**: 
+**Challenges encountered**: At first, I didn't understand where race conditions appear in the code.
 
-**How I solved it**: 
+**How I solved it**: After further examining the SharedResources class, I discovered that these variables are accessed concurrently by several threads.
 
-**Testing approach**: 
+**Testing approach**:I observed conflicting results when I ran the program without synchronization. 
 
-**Time spent**: 
-
----
-
-### Entry 2 - [Date, Time]
-**What I implemented**: 
-
-**Challenges encountered**: 
-
-**How I solved it**: 
-
-**Testing approach**: 
-
-**Time spent**: 
+**Time spent**: 2 hours
 
 ---
 
-### Entry 3 - [Date, Time]
-**What I implemented**: 
+### Entry 2 - [ May 1, 2026 - 5:30 PM]
+**What I implemented**: I enclosed important areas with a lock and used ReentrantLock to safeguard shared counters.Try-finally blocks contain lock() and lock.unlock().
 
-**Challenges encountered**: 
+**Challenges encountered**:knowing the precise location for the lock statements. 
 
-**How I solved it**: 
+**How I solved it**: I used the essential section pattern and consulted Operating System Concepts (Chapter 6).
 
-**Testing approach**: 
+**Testing approach**: I ran the program multiple times to ensure consistency.
 
-**Time spent**: 
+**Time spent**:  2.5 hours
 
 ---
 
-### Entry 4 - [Date, Time]
-**What I implemented**: 
+### Entry 3 - [ May 1, 2026 - 10:00 PM]
+**What I implemented**: To prevent ConcurrentModificationException, I used ReentrantLock to protect executionLog.
 
-**Challenges encountered**: 
+**Challenges encountered**:I didn't know if ArrayList was thread-safe. 
 
-**How I solved it**: 
+**How I solved it**: I did some investigation and found that synchronization was required because ArrayList is not thread-safe.
 
-**Testing approach**: 
+**Testing approach**: I verified that no exceptions occurred during execution.
 
-**Time spent**: 
+**Time spent**: 1.5 hours
+
+---
+
+### Entry 4 - [ May 2, 2026 - 3:00 PM]
+**What I implemented**: I implemented acquire() and release() inside run() and added a semaphore with a single permission to regulate CPU access.
+
+**Challenges encountered**: recognizing the differences between a lock and a semaphore.
+
+**How I solved it**: I went over the lecture notes and examples from the textbook.
+
+**Testing approach**: I ensured that only one process executes at a time.
+
+**Time spent**: 2 hours
 
 ---
 
@@ -104,7 +104,7 @@ Document your development process with **minimum 3 entries** showing progression
 - Why is concurrent access a problem?
 - What incorrect behavior could occur?
 
-**Your Answer**:
+**Your Answer**:Due to numerous threads incrementing contextSwitchCount at the same time, which results in inaccurate numbers, the first race condition arises. The second race situation arises in executionLog because to the concurrent addition of elements to ArrayList by several threads, which is not thread-safe. Data corruption or exceptions may result from this. Overlapping procedures may cause updates to be missed in the absence of synchronization.
 
 [Your answer here - 4-6 sentences with code examples]
 
