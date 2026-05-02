@@ -301,7 +301,7 @@ Average Waiting Time: 53520ms
 
 ## Part 5: Reflection and Learning
 
-### What I learned about synchronization:
+### What I learned about synchronization:This task taught me how crucial synchronization is in multi-threaded systems. I was aware that when several threads access shared resources at once, race situations can produce inaccurate results. I discovered how to use ReentrantLock to safeguard important portions and guarantee mutual exclusion. I also realized that semaphores can regulate who has access to shared resources, like the CPU. One important realization is that inadequate synchronization can result in major problems like inconsistent data or program failures. Additionally, I discovered that try-finally blocks guarantee that locks are always released, which helps avoid deadlocks. All things considered, this assignment improved my comprehension of concurrent programming ideas.
 
 [6-8 sentences about key concepts, challenges, insights]
 
@@ -311,13 +311,13 @@ Average Waiting Time: 53520ms
 
 Give TWO examples where synchronization is critical:
 
-**Example 1**: 
+**Example 1**: In operating systems, synchronization is used to manage access to shared resources like memory and CPU scheduling to prevent conflicts between processes.
 
-**Example 2**: 
+**Example 2**: In banking systems, synchronization is critical when multiple users access and update the same account balance to prevent incorrect transactions.
 
 ---
 
-### How I would explain synchronization to others:
+### How I would explain synchronization to others:Synchronization can be explained as a way to control how multiple threads access shared resources. Imagine multiple people trying to write on the same whiteboard at the same time; without coordination, the writing will become messy. Locks act like a rule that allows only one person to write at a time, while semaphores control how many people can access the board simultaneously. This ensures that the final result is correct and organized.
 
 [Explain to someone who just finished Assignment 1 - use simple terms and analogies]
 
@@ -325,7 +325,7 @@ Give TWO examples where synchronization is critical:
 
 ## Part 6: GitHub Repository Information
 
-**Repository URL**: 
+**Repository URL**: https://github.com/Farah66x/OS-Assignment3-Farah-Almutawasi.git
 
 **Number of commits**: 
 
