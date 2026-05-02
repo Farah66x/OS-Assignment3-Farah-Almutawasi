@@ -113,7 +113,7 @@ Document your development process with **minimum 3 entries** showing progression
 ### Question 2: Locks vs Semaphores
 **Q**: Explain the difference between ReentrantLock and Semaphore. Where did you use each in your code and why?
 
-**Your Answer**:
+**Your Answer**: ReentrantLock ensures that only one thread can access crucial parts at a time by providing mutual exclusion. In contrast, semaphore uses permits to regulate access to a resource. In my code, I utilized a binary semaphore to manage CPU access so that only one process could execute at a time and ReentrantLock to safeguard shared variables and executionLog.
 
 [Your answer here - explain your implementation choices]
 
@@ -122,7 +122,7 @@ Document your development process with **minimum 3 entries** showing progression
 ### Question 3: Deadlock Prevention
 **Q**: What is deadlock? Explain TWO prevention techniques and what you did to prevent deadlocks in your code.
 
-**Your Answer**:
+**Your Answer**:When two or more threads are waiting endlessly for resources owned by one another, this is known as a deadlock. Using try-finally blocks to guarantee that locks are always released is one preventative strategy. Keeping the right locking sequence is another way to prevent cyclic waits. Try-finally was used in my code to securely release locks and semaphores.
 
 [Your answer here - reference try-finally blocks, lock ordering, etc.]
 
@@ -135,7 +135,7 @@ Document your development process with **minimum 3 entries** showing progression
 - What are the trade-offs between the two approaches?
 - Given that the three counters are independent, which approach provides better concurrency and why?
 
-**Your Answer**:
+**Your Answer**:I secured all shared counters with a single lock (coarse-grained locking). This avoids complexity and streamlines implementation. However, because the counters are independent, fine-grained locking might enable better concurrency. In spite of this, I decided to use coarse-grained locking for this job due to its simplicity and dependability.
 
 [Your answer here - explain coarse-grained vs fine-grained locking, independence of counters, concurrency implications. Show understanding of when to use each approach. 5-8 sentences expected.]
 
